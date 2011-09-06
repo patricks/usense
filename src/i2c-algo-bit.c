@@ -30,6 +30,10 @@
 #include "i2c.h"
 #include "i2c-algo-bit.h"
 
+#ifndef	EREMOTEIO
+#define	EREMOTEIO EIO
+#endif
+
 /* ----- global defines ----------------------------------------------- */
 
 #ifdef DEBUG

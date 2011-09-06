@@ -21,3 +21,4 @@ build
 /ltmain.sh
 /stamp-h1
 /src/usense
+*.swp

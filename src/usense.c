@@ -363,11 +363,15 @@ static int usense_attach_usb(struct usense_device *udev)
 
 	for (j = 0; j < dev->config->bNumInterfaces; j++) {
 		int timeout = 5;
+#if	LIBUSB_HAS_DETACH_KERNEL_DRIVER_NP
+		/* Only call this is libusb claims to have it */
 		err = usb_detach_kernel_driver_np(usb, j);
-		if ((err == -ENOENT) || (err == -ENODATA))
+         /* And treat ENOSYS (not implemented) as no error */
+		if ((err == -ENOENT) || (err == -ENODATA) || (err ==  -ENOSYS))
 			err = 0;
 		else if (err < 0)
 			break;
+#endif
 		do {
 			err = usb_claim_interface(usb, j);
 			if (err == -EBUSY) {

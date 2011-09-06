@@ -101,7 +101,7 @@ static int temp_read(struct usb_dev_handle *usb, int16_t *val)
 
 	memset(buff, 0, sizeof(buff));
 	err = usb_control_msg(usb, 0xa1, 1, 0x300, 0x01,
-	                      (void *)buff, 8, TEMPER_TIMEOUT);
+	                      (void *)buff, 256, TEMPER_TIMEOUT);
 	if (err < 0) return err;
 
 	/* First byte is Degrees C
