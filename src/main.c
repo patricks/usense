@@ -38,7 +38,6 @@ static int list_devices(struct usense *usense)
 
 static const char *nth_device(struct usense *usense, int n)
 {
-	struct usense_device *dev;
 	static char buff[PATH_MAX];
 	const char *cp = NULL;
 	const char *name;
