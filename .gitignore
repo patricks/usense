@@ -22,3 +22,5 @@ build
 /stamp-h1
 /src/usense
 *.swp
+
+compile
